@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>Повідомлення</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Відправити повідомлення</h1>
+       
+        <div class="input-group">
+            <textarea id="messageTextbox" placeholder="Введіть ваше повідомлення тут..."></textarea>
+            <button id="sendMessage">Відправити</button>
+        </div>
+
+        <h2>Ваші повідомлення:</h2>
+        <div id="userMessages">
+             
+        </div>
+
+        <h2>Всі повідомлення:</h2>
+        <select id="sortMessages">
+            <option value="id">Сортувати за ID</option>
+            <option value="time">Сортувати за часом</option>
+            <option value="time">Сортувати за часом()</option>
+        </select>
+        <div id="allMessages">
+             
+        </div>
+
+  
+
+    </div>
+    
+</body>
+</html>
