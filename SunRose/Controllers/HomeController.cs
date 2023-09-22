@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SunRose.Models;
 using SunRose.Services.Interfaces;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection.Metadata.Ecma335;
 
 namespace SunRose.Controllers
@@ -72,7 +74,7 @@ namespace SunRose.Controllers
 
 
         [HttpGet]
-        public IActionResult GetAllMessages()
+        public IActionResult GetAllMessages(string sortBy)
         {
             
             var messages = _service.GetAllMessages().Select(msg => new  
@@ -82,7 +84,24 @@ namespace SunRose.Controllers
                 user = msg.UserId.ToString()
             });
 
+
+            switch(sortBy)
+            {
+                case "id":
+                    messages = messages.OrderBy(m => m.user).ToList();
+                break;
+
+                case "time":
+                    messages = messages.OrderBy(m => m.date).ToList();
+                break;
+
+                default:
+                messages = messages.ToList();
+                break;
+            }
+
             return Json(messages);
+
         }
 
 

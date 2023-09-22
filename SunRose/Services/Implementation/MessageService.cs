@@ -19,8 +19,12 @@ namespace SunRose.Services.Implementation
 
         public  IList<Message>  GetUserMessages(Guid userId)
         {
-              return   _messages.Where(x=>x.UserId == userId).Skip(_messages.Count - 10).ToList();
-         }
+            var userMessage = _messages.Where(x => x.UserId == userId).ToList();//.Skip(_messages.Count - 10).ToList();
+            var result = userMessage.Skip(userMessage.Count-10).ToList();
+
+
+            return result;
+        }
 
         public bool SaveMessage(string msg,Guid userId)
         {
