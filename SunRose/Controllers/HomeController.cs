@@ -80,7 +80,7 @@ namespace SunRose.Controllers
             var messages = _service.GetAllMessages().Select(msg => new  
             {
                 message = msg.Text,
-                date = msg.Timestamp.ToString("dd-MM-yyyy HH:mm"),
+                date = DateTime.Parse(msg.Timestamp.ToString("dd-MM-yyyy HH:mm")),
                 user = msg.UserId.ToString()
             });
 
@@ -93,6 +93,10 @@ namespace SunRose.Controllers
 
                 case "time":
                     messages = messages.OrderBy(m => m.date).ToList();
+                break;
+
+                case "timeDesc":
+                messages = messages.OrderBy(m=> m.date).Reverse().ToList();
                 break;
 
                 default:
